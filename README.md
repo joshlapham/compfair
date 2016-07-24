@@ -4,10 +4,8 @@ By Josh Lapham [josh@joshlapham.com]
 
 https://github.com/joshlapham/compfair
 
-License: Beerware
+License: [Beerware](https://en.wikipedia.org/wiki/Beerware)
 
-### What this does
+## What This Is
 
-Scrapes the [Computer Markets](http://computermarkets.com) website for upcoming dates in my local area.
-
-Written in Python and requires `BeautifulSoup` and `lxml`
+Simple [Python](https://www.python.org/) script to scrape (using [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)) the [Computer Markets](http://computermarkets.com) website for upcoming dates in a given area.

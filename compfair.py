@@ -1,28 +1,21 @@
 #!/usr/bin/python
 
-###
-#
-# compfair.py
-# Scrapes the ComputerMarkets.com website for upcoming dates in my local area.
-#
-# By Josh Lapham [josh@joshlapham.com]
-#
-# https://github.com/joshlapham/compfair
-#
-# License: Beerware
-# 
-###
-
 from bs4 import BeautifulSoup
 from urllib2 import urlopen
 
 # URL of Computer Market venue website
-url = "http://www.computermarkets.com/cm/index.php?view=venueevents&id=18:newcastle-pcyc%20Broadmeadow"
-# Beautiful Soup variables
-html = urlopen(url).read()
-soup = BeautifulSoup(html, "lxml")
+# TODO: don't hardcode URL; build URL parameters and allow for other locations
+URL = "http://www.computermarkets.com/cm/index.php?view=venueevents&id=18:newcastle-pcyc%20Broadmeadow"
 
-# Loop over the <td> elements for the 'el_date' headers
-for date in soup.findAll("td", attrs={ 'headers' : "el_date" }):
-	# Print only the dates in the tags and strip any whitespace
-	print date.get_text(strip=True)
+def fetch_dates(url):
+	""" Fetches dates of upcoming computer market dates for a given `computermarkets.com` URL. """
+	
+	html = urlopen(URL).read()
+	soup = BeautifulSoup(html, "lxml")
+	
+	for date in soup.findAll("td", attrs={ "headers" : "el_date" }):
+		print date.get_text(strip=True)
+		
+if __name__ == '__main__':
+	fetch_dates(URL)
+	
